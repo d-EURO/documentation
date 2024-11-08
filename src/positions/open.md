@@ -2,9 +2,9 @@
 
 **How to propose completely new positions with any collateral.**
 
-For now, it is not possible to open new positions through the frontend. But bold degens can do so on Etherscan or through their other tool of choice. This page explains the meaning of all the parameters and provides some guidance on what kind of position should be rejected by the pool share holders. For criteria that collateral tokens should fulfill, have a look at the [acceptable collateral](https://github.com/DecentralizedEuro-dEURO/DecentralizedEuro/discussions/11) page. Most of the time, the preferred way of creating a position is not to open a new one, but to clone an existing one, which is described on the next page.
+For now, it is not possible to open new positions through the frontend. But bold degens can do so on Etherscan or through their other tool of choice. This page explains the meaning of all the parameters and provides some guidance on what kind of position should be rejected by the pool share holders. For criteria that collateral tokens should fulfill, have a look at the [acceptable collateral](https://github.com/d-euro/discussions/11) page. Most of the time, the preferred way of creating a position is not to open a new one, but to clone an existing one, which is described on the next page.
 
-To open a new position with the default minting hub (there might be other minting hubs in the future, but for now there is only one), one needs to call its [openPosition method](https://github.com/DecentralizedEuro-dEURO/DecentralizedEuro/blob/main/contracts/MintingHub.sol). It has the following signature:
+To open a new position with the default minting hub (there might be other minting hubs in the future, but for now there is only one), one needs to call its [openPosition method](https://github.com/d-euro/blob/main/contracts/MintingHub.sol). It has the following signature:
 
 ```solidity
 openPosition(
