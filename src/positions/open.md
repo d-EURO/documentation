@@ -30,4 +30,4 @@ Before being able to open a position, one needs to allow the minting hub to spen
 Note that calling the _openPosition_ method, an opening fee of 1000 dEURO is automatically deducted. That is why the Decentralized Euro allowance is necessary. This fee is not returned if the position is denied and goes to the equity holders.
 
 Here is a screenshot of the parameters used to open the first position with Wrapped Ether as collateral in transaction [0x380b...8d](https://etherscan.io/tx/0x380b574e4b9489c8ffe66ae169156d4aaeba44ec29bb173dc208740086bf128d):
-![Opening new Positions](https://github.com/DFXswiss/Decentralized Euro-docu/assets/169650174/e473d152-62ce-4880-ac35-c7a672e585fd)
+![Opening new Positions](https://github.com/DFXswiss/DecentralizedEuro-docu/assets/169650174/e473d152-62ce-4880-ac35-c7a672e585fd)
