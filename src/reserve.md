@@ -4,7 +4,7 @@
 
 There are three types of reserves in the Decentralized Euro system. The first one consists of other Euro stablecoins that reside in a bridge, the second one consists of funds provided by the borrowers when they mint new Decentralized Euros, and the third one is provided by the holders of reserve pool shares. The collateral used to mint Decentralized Euro is not considered reserve as it conceptually stays outside the "balance sheet" of the Decentralized Euro system.
 
-![Reserve](https://github.com/DFXswiss/d-EURO/documentation/assets/169650174/23d82921-4c4d-4ca6-9368-1a9e4e0b0e04)
+![Reserve](https://github.com/DFXswiss/frankencoin-docu/assets/169650174/23d82921-4c4d-4ca6-9368-1a9e4e0b0e04)
 
 If the Decentralized Euro system was a company, its balance sheet would roughly look as shown above. On the asset side, the system has all the stablecoins that reside in bridges (**x**), it has given loans to minters that they need to repay (**m**), and it has a number of dEURO in its reserves (**r**). On the liabilities side, there are all the Decentralized Euros in circulation (**z**), the reserve (**b**) it owes to the minters, and the equity (**e**) owned by the pool share holders.
 
