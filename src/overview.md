@@ -33,6 +33,4 @@ Anyone can mint new Decentralized Euros against a collateral using the built-in 
 ## Technical Architecture
 
 The Decentralized Euro system consists of a set of smart contracts on Ethereum mainnet. The two token contracts serves as a foundation for everything else. The dEURO can have an arbitrary number of contracts that have the power to mint and burn dEURO. Anyone can propose new such contracts and once they passed the governance process, they can start minting and buringn dEURO. Today, there are two such contracts. One is a simple bridge to bootstrap the Decentralized Euro based on the existing CryptoEuro (xEURO). The other is a contract named minting hub that serves as the central point to manage all debt positions. The nDEPS token has built-in governance features and holds the equity capital of the system.
-![Technical Architecture](https://github.com/DFXswiss/DecentralizedEuro-docu/assets/169650174/23348161-db7f-442b-ab48-31fc968f2ab0)
-
-
+![Technical Architecture](https://github.com/d-EURO/documentation/assets/169650174/23348161-db7f-442b-ab48-31fc968f2ab0)
