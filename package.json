@@ -1,13 +1,13 @@
 {
-  "name": "frankencoin-docu",
+  "name": "DecentralizedEuro-docu",
   "version": "0.0.1",
-  "description": "Documentation for frankencoin.com",
+  "description": "Documentation for d-euro.io",
   "main": "index.js",
   "authors": {
     "name": "DFX",
     "email": "info@dfx.swiss"
   },
-  "repository": "https://github.com/DFXswiss/frankencoin-docu",
+  "repository": "https://github.com/DFXswiss/dEURO-docu",
   "scripts": {
     "start": "vuepress dev src",
     "build": "vuepress build src"
