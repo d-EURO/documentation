@@ -1,0 +1,19 @@
+{
+  "name": "DecentralizedEuro-documentation",
+  "version": "0.0.1",
+  "description": "Documentation for d-euro.io",
+  "main": "index.js",
+  "authors": {
+    "name": "DFX",
+    "email": "info@dfx.swiss"
+  },
+  "repository": "https://github.com/d-EURO/documentation/",
+  "scripts": {
+    "start": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
