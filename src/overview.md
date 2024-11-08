@@ -20,7 +20,7 @@ Like other stablecoins, the Decentralized Euro primarily serves three use-cases.
 
 ### Payments
 
-The Decentralized Euro (dEURO) can be used to make payments in Euros. Please consult the [landing page](https://Decentralized Euro.com) for a list of apps and services that help in using the Decentralized Euro as a means of payment, as well as a list of bridged Decentralized Euro token on other networks than Ethereum mainnet. Payments typically concern small amounts and therefore a layer two instance of the token might be preferred over the mainnet instance.
+The Decentralized Euro (dEURO) can be used to make payments in Euros. Please consult the [landing page](https://d-euro.io/) for a list of apps and services that help in using the Decentralized Euro as a means of payment, as well as a list of bridged Decentralized Euro token on other networks than Ethereum mainnet. Payments typically concern small amounts and therefore a layer two instance of the token might be preferred over the mainnet instance.
 
 ### Store of Wealth
 
