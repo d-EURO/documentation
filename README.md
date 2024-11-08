@@ -20,11 +20,11 @@ Like other stablecoins, the Decentralized Euro primarily serves three use-cases.
 
 ### Payments
 
-The Decentralized Euro (dEURO) can be used to make payments in Euros. Please consult the [landing page](https://Decentralized Euro.com) for a list of apps and services that help in using the Decentralized Euro as a means of payment, as well as a list of bridged Decentralized Euro token on other networks than Ethereum mainnet. Payments typically concern small amounts and therefore a layer two instance of the token might be preferred over the mainnet instance.
+The Decentralized Euro (dEURO) can be used to make payments in Euros. Please consult the [landing page](https://d-euro.io/) for a list of apps and services that help in using the Decentralized Euro as a means of payment, as well as a list of bridged Decentralized Euro token on other networks than Ethereum mainnet. Payments typically concern small amounts and therefore a layer two instance of the token might be preferred over the mainnet instance.
 
 ### Store of Wealth
 
-The Euro has an excellent track record of stability relative to other fiat currencies. Over the past fifty years it has lost XX% of its value, whereas the dollar and the euro have lost more than YY%. It is often considered a safe haven when the world is in turmoil. So far, crypto investors could not get significant Euro exposure without going off-chain. For this use-case, it is important to be able to trade the dEURO in high volumes at narrow spreads.
+The Euro has an excellent track record of stability relative to other fiat currencies and is often considered a safe haven when the world is in turmoil. So far, crypto investors could not get significant Euro exposure without going off-chain. For this use-case, it is important to be able to trade the Decentralized Euro in high volumes at narrow spreads.
 
 ### Borrowing / Seignorage
 
@@ -32,5 +32,5 @@ Anyone can mint new Decentralized Euros against a collateral using the built-in 
 
 ## Technical Architecture
 
-The Decentralized Euro system consists of a set of smart contracts on Ethereum mainnet. The two token contracts serves as a foundation for everything else. The dEURO can have an arbitrary number of contracts that have the power to mint and burn dEURO. Anyone can propose new such contracts and once they passed the governance process, they can start minting and buringn dEURO. Today, there are two such contracts. One is a simple bridge to bootstrap the Decentralized Euro based on the existing CryptoEuro (xEURO). The other is a contract named minting hub that serves as the central point to manage all debt positions. The nDEPS token has built-in governance features and holds the equity capital of the system.
+The Decentralized Euro system consists of a set of smart contracts on Ethereum mainnet. The two token contracts serves as a foundation for everything else. The Decentralized Euro can have an arbitrary number of contracts that have the power to mint and burn Decentralized Euro. Anyone can propose new such contracts and once they passed the governance process, they can start minting and buringn Decentralized Euro. Today, there are two such contracts. One is a simple bridge to bootstrap the Decentralized Euro based on the existing CryptoEuro (xEURO). The other is a contract named minting hub that serves as the central point to manage all debt positions. The nDEPS token has built-in governance features and holds the equity capital of the system.
 
