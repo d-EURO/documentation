@@ -13,7 +13,7 @@ module.exports = {
   ],
 
   themeConfig: {
-    repo: "DFXswiss/DecentralizedEuro-docu",
+    repo: "d-EURO/documentation",
     logo: "/assets/logo.svg",
     editLinks: true,
     editLinkText: "Edit this page on Github",
