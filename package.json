@@ -7,7 +7,7 @@
     "name": "DFX",
     "email": "info@dfx.swiss"
   },
-  "repository": "https://github.com/DFXswiss/dEURO-docu",
+  "repository": "https://github.com/d-EURO/documentation/",
   "scripts": {
     "start": "vuepress dev src",
     "build": "vuepress build src"
