@@ -16,7 +16,7 @@ To provide you with an intuitive understanding of the balance sheet, let us look
 
 When a position is liquidated, there are three layers of protection that kick in to protect the system from a loss: First, the borrower's reserve directly attributable to the liquidated position is used to cover the loss. If that does not suffice, the loss is taken out of equity, making the pool shares less valuable. Third, if not even that is enough, then the general borrower's reserve is tapped into. This last escalation step is a means of last resort. It implies that other users will have to pay back more than anticipated when closing their position. This gives not only the pool share holders an incentive to guard the system against losses, but also everyone who has an open position as they will suffer when a severe loss happens due to having accepted unsound collateral.
 
-Lastly, it is worth mentioning that the system is designed such that given efficient markets, the, equity will in equilibrium be about one third of the Decentralized Euros not created through a bridge, i.e. **3e = z - x**. This is described in more detail in the [research paper](https://DecentralizedEuro.com/thesis-preprint-DecentralizedEuro.pdf).
+Lastly, it is worth mentioning that the system is designed such that given efficient markets, the, equity will in equilibrium be about one third of the Decentralized Euros not created through a bridge, i.e. **3e = z - x**.
 
 
 
