@@ -24,7 +24,7 @@ The Decentralized Euro (dEURO) can be used to make payments in Euros. Please con
 
 ### Store of Wealth
 
-The Euro has an excellent track record of stability relative to other fiat currencies. Over the past fifty years it has lost XX% of its value, whereas the dollar and the euro have lost more than YY%. It is often considered a safe haven when the world is in turmoil. So far, crypto investors could not get significant Euro exposure without going off-chain. For this use-case, it is important to be able to trade the dEURO in high volumes at narrow spreads.
+The Euro has an excellent track record of stability relative to other fiat currencies and is often considered a safe haven when the world is in turmoil. So far, crypto investors could not get significant Euro exposure without going off-chain. For this use-case, it is important to be able to trade the dEURO in high volumes at narrow spreads.
 
 ### Borrowing / Seignorage
 
