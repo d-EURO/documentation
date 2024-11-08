@@ -12,4 +12,4 @@ The governance system is subject to the following rules:
 5. Users can delegate their votes to other users, who in turn can delegate them further. This allows minority shareholders to team up for a veto. For example, if Alice has 1% of the votes and delegates them to Bob, Bob himself has 1.5% and delegates them to Charles, then both Bob and Charles have the power to execute vetoes.
 6. Users can cancel each others votes. For example, Alice can sacrifice 100 votes in order to also reduce Bob’s number of votes by 100. This is done using the 'kamikaze' function, which is not yet exposed in the frontend.
 
-In the ideal case, there is a briad consensus for what constitutes an acceptable proposal and no one ever makes a proposal that has to be vetoed. One place to help forming this consensus is the [Decentralized Euro forum](https://github.com/d-EURO/discussions).
+In the ideal case, there is a briad consensus for what constitutes an acceptable proposal and no one ever makes a proposal that has to be vetoed. One place to help forming this consensus is the [Decentralized Euro forum](https://github.com/d-EURO/documentation/discussions).
