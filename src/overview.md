@@ -33,4 +33,6 @@ Anyone can mint new Frankencoins against a collateral using the built-in borrowi
 ## Technical Architecture
 
 The Frankencoin system consists of a set of smart contracts on Ethereum mainnet. The two token contracts serves as a foundation for everything else. The ZCHF can have an arbitrary number of contracts that have the power to mint and burn ZCHF. Anyone can propose new such contracts and once they passed the governance process, they can start minting and buringn ZCHF. Today, there are two such contracts. One is a simple bridge to bootstrap the Frankencoin based on the existing CryptoFranc (XCHF). The other is a contract named minting hub that serves as the central point to manage all debt positions. The FPS token has built-in governance features and holds the equity capital of the system.
+![Technical Architecture](https://github.com/DFXswiss/frankencoin-docu/assets/169650174/23348161-db7f-442b-ab48-31fc968f2ab0)
+
 
