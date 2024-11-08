@@ -13,7 +13,7 @@ module.exports = {
   ],
 
   themeConfig: {
-    repo: "DFXswiss/frankencoin-docu",
+    repo: "d-EURO/documentation",
     logo: "/assets/logo.svg",
     editLinks: true,
     editLinkText: "Edit this page on Github",
@@ -23,8 +23,8 @@ module.exports = {
 
     nav: [
       {
-        text: "Frankencoin.com",
-        link: "https://frankencoin.com",
+        text: "d-Euro.io",
+        link: "https://d-euro.io/",
       },
     ],
 
