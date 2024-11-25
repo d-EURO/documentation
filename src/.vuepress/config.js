@@ -14,7 +14,7 @@ module.exports = {
 
   themeConfig: {
     repo: "d-EURO/documentation",
-    logo: "/assets/logo.svg",
+    logo: "/assets/logo.png",
     editLinks: true,
     editLinkText: "Edit this page on Github",
     docsBranch: "dev",
@@ -23,8 +23,8 @@ module.exports = {
 
     nav: [
       {
-        text: "d-Euro.io",
-        link: "https://d-euro.io/",
+        text: "dEuro.com",
+        link: "https://dEuro.com/",
       },
     ],
 
