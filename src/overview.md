@@ -4,7 +4,7 @@
 
 ## Structure and Purpose
 
-The purpose of this page is to provide potential users of the Decentralized Euro system with everything they need to know to meaningfully interact with it. For actually interacting with the system, there is a standard [frontend](https://d-euro.io/). The name Decentralized Euro hints at its self-governing nature, but also the risks associated with releasing an artificial machinery into the wild. If you encounter errors or if things are not clear to you, you can [reach out to us in the Telegram group](https://web.telegram.org/a/#-1002370295474) or [file a suggestion for improving this page on GitHub](https://github.com/d-euro/DecentralizedEuro-dapp/issues).
+The purpose of this page is to provide potential users of the Decentralized Euro system with everything they need to know to meaningfully interact with it. For actually interacting with the system, there is a standard [frontend](https://dEuro.com/). The name Decentralized Euro hints at its self-governing nature, but also the risks associated with releasing an artificial machinery into the wild. If you encounter errors or if things are not clear to you, you can [reach out to us in the Telegram group](https://web.telegram.org/a/#-1002370295474) or [file a suggestion for improving this page on GitHub](https://github.com/d-euro/DecentralizedEuro-dapp/issues).
 
 ## Decentralized Euro (dEURO) and Decentralized Euro Pool Shares (nDEPS)
 
@@ -20,7 +20,7 @@ Like other stablecoins, the Decentralized Euro primarily serves three use-cases.
 
 ### Payments
 
-The Decentralized Euro (dEURO) can be used to make payments in Euros. Please consult the [landing page](https://d-euro.io/) for a list of apps and services that help in using the Decentralized Euro as a means of payment, as well as a list of bridged Decentralized Euro token on other networks than Ethereum mainnet. Payments typically concern small amounts and therefore a layer two instance of the token might be preferred over the mainnet instance.
+The Decentralized Euro (dEURO) can be used to make payments in Euros. Please consult the [landing page](https://dEuro.com/) for a list of apps and services that help in using the Decentralized Euro as a means of payment, as well as a list of bridged Decentralized Euro token on other networks than Ethereum mainnet. Payments typically concern small amounts and therefore a layer two instance of the token might be preferred over the mainnet instance.
 
 ### Store of Wealth
 
