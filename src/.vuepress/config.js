@@ -45,8 +45,6 @@ module.exports = {
 
       { title: "🏦  Reserve", path: "/reserve",
         children: [
-          "/reserve/borrowers-reserve",
-          "/reserve/bridge-reserve",
           "/reserve/pool-shares",
         ],
       },
