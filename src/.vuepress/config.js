@@ -5,7 +5,8 @@ module.exports = {
   description: description,
 
   head: [
-    ["meta", { name: "theme-color", content: "#072440" }],
+    ["link", { rel: "icon", href: "/assets/favicon.png" }],
+    ["meta", { name: "theme-color", content: "#092f62" }],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "black" }],
     ["script", { type: "text/javascript", src: "https://cdn.weglot.com/weglot.min.js" }],

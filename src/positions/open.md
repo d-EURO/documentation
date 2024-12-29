@@ -2,9 +2,9 @@
 
 **How to propose completely new positions with any collateral.**
 
-For now, it is not possible to open new positions through the frontend. But bold degens can do so on Etherscan or through their other tool of choice. This page explains the meaning of all the parameters and provides some guidance on what kind of position should be rejected by the pool share holders. For criteria that collateral tokens should fulfill, have a look at the [acceptable collateral](https://github.com/d-euro/discussions/11) page. Most of the time, the preferred way of creating a position is not to open a new one, but to clone an existing one, which is described on the next page.
+For now, it is not possible to open new positions through the frontend. But bold degens can do so on Etherscan or through their other tool of choice. This page explains the meaning of all the parameters and provides some guidance on what kind of position should be rejected by the pool share holders. For criteria that collateral tokens should fulfill, have a look at the [acceptable collateral](https://github.com/orgs/d-EURO/discussions/categories/acceptable-collaterals) page. Most of the time, the preferred way of creating a position is not to open a new one, but to clone an existing one, which is described on the next page.
 
-To open a new position with the default minting hub (there might be other minting hubs in the future, but for now there is only one), one needs to call its [openPosition method](https://github.com/d-euro/blob/main/contracts/MintingHub.sol). It has the following signature:
+To open a new position with the default minting hub (there might be other minting hubs in the future, but for now there is only one), one needs to call its [openPosition method](https://github.com/d-EURO/smartContracts/blob/main/contracts/MintingHubV2/MintingHub.sol). It has the following signature:
 
 ```solidity
 openPosition(
@@ -28,6 +28,3 @@ Before being able to open a position, one needs to allow the minting hub to spen
 * _reservePPM_: this parameter indicates the reserve that is put aside when minting in parts per million, for example 250,000 for a reserve requirement of 25%. It should be set such that there is a very high confidence that challenges do not end more than that below the liquidation price under the assumption that the market price has just fallen slightly below the liquidation price at the start of the challenge. The more volatile the collateral and the longer the challenge period, the higher must be the reserve requirement.
 
 Note that calling the _openPosition_ method, an opening fee of 1000 dEURO is automatically deducted. That is why the Decentralized Euro allowance is necessary. This fee is not returned if the position is denied and goes to the equity holders.
-
-Here is a screenshot of the parameters used to open the first position with Wrapped Ether as collateral in transaction [0x380b...8d](https://etherscan.io/tx/0x380b574e4b9489c8ffe66ae169156d4aaeba44ec29bb173dc208740086bf128d):
-![Opening new Positions](https://github.com/DFXswiss/frankencoin-docu/assets/169650174/e473d152-62ce-4880-ac35-c7a672e585fd)

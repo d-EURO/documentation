@@ -1,6 +1,6 @@
 # Table of contents
 
-* [🧀 Overview](README.md)
+* [🧀 Overview](overview.md)
 * [🌁 Stablecoin Bridges](swap.md)
 * [💰 Collateralized Minting](positions.md)
   * [Opening New Positions](positions/open.md)
