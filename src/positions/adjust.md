@@ -11,4 +11,5 @@ The following rules apply:
 * When withdrawing excess collateral, it is important to observe the dust limit. For example, if the minimum collateral is 1 WETH, the collateral cannot be reduced to 0.9 WETH.
 * There is no limit for how much collateral you can add, but doing so requires the allowance to be set.
 * Increasing the liquidation price will allow you to borrow more, but only after the cooldown period has passed again, allowing others to challenge your position at the new price before you can use the higher price to mint Decentralized Euro.
-![Adjust a position](https://github.com/DFXswiss/frankencoin-docu/assets/169650174/6dd5d9e7-85af-4e0e-8571-308ac722c993)
+
+<figure style="text-align: center"><img src="/assets/adjust-position.png" alt=""><figcaption><p>Adjust position</p></figcaption></figure>
