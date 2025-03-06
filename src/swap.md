@@ -1,4 +1,4 @@
-# 🌁 Stablecoin Bridges
+# Stablecoin Bridges
 
 **Simple contracts that allow swapping other Euro stablecoins into
   Decentralized Euro and back.**
