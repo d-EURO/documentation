@@ -1,4 +1,4 @@
-# 💰 Collateralized Minting
+# Collateralized Minting
 
 **Documentation on minting Decentralized Euros against a collateral.**
 
