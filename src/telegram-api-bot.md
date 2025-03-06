@@ -1,4 +1,4 @@
-# 🤖 Telegram API Bot
+# Telegram API Bot
 
 The dEURO API Telegram Bot is a communication tool designed to keep users informed about various activities and updates within the dEURO ecosystem.
 

@@ -30,11 +30,11 @@ module.exports = {
     ],
 
     sidebar: [
-      { title: "🧀  Overview", path: "/overview" },
+      { title: "Overview", path: "/overview" },
 
-      { title: "🌁  Stablecoin Bridges", path: "/swap" },
+      { title: "Stablecoin Bridges", path: "/swap" },
 
-      { title: "💰  Collateralized Minting", path: "/positions",
+      { title: "Collateralized Minting", path: "/positions",
         children: [
           "/positions/open",
           "/positions/clone",
@@ -43,17 +43,19 @@ module.exports = {
         ],
       },
 
-      { title: "🏦  Reserve", path: "/reserve",
+      { title: "Reserve", path: "/reserve",
         children: [
           "/reserve/pool-shares",
         ],
       },
 
-      { title: "⚖️  Governance", path: "/governance" },
+      { title: "Governance", path: "/governance" },
 
-      { title: "🤖 Telegram API Bot", path: "/telegram-api-bot" },
 
-      { title: "⁉️  FAQ", path: "/faq" },
+      { title: "Telegram API Bot", path: "/telegram-api-bot" },
+
+      { title: "FAQ", path: "/faq" },
+
     ],
   },
 
