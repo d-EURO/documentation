@@ -51,9 +51,11 @@ module.exports = {
 
       { title: "Governance", path: "/governance" },
 
+
       { title: "Telegram API Bot", path: "/telegram-api-bot" },
 
       { title: "FAQ", path: "/faq" },
+
     ],
   },
 
