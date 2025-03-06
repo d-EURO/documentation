@@ -1,4 +1,4 @@
-# 🏦 Reserve
+# Reserve
 
 **The three types of reserves that help with stabilizing the system.**
 

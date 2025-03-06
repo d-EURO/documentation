@@ -1,4 +1,4 @@
-# 🧀 Overview
+# Overview
 
 **Introducing the two tokens and the overall structure of the system**
 

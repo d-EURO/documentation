@@ -1,4 +1,4 @@
-# ⚖️ Governance
+# Governance
 
  **A guide for reserve pool share holders on how they should use their veto
   power.**
