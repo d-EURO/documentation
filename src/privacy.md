@@ -139,7 +139,7 @@ For details, please refer to the [Facebook Privacy Policy](https://www.facebook.
 
 ##### X
 
-We have a [profile at X](https://x.com/dEUROAssoc). The provider is Twitter International Company, One Cumberland Place, Fenian Street, Dublin 2, D02 AX07, Ireland.  
+We have a [profile at X](https://x.com/dEURO_com). The provider is Twitter International Company, One Cumberland Place, Fenian Street, Dublin 2, D02 AX07, Ireland.  
 
 We would like to point out that, as the operator of these pages, we have no influence on the processing of the transmitted data by X and are not informed about its exact content or use.  
 
@@ -149,19 +149,9 @@ Data transfer to the USA is based on the standard contractual clauses of the EU 
 
 Details can be found in the [Privacy Policy of X](https://x.com/en/privacy).
 
-##### Instagram
-
-We have a [profile on Instagram](https://www.instagram.com/deuroassociation/). The provider is Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Ireland.  
-
-We would like to point out that, as the operator of these pages, we have no influence on the processing of the transmitted data by Instagram and are not informed about its exact content or use.  
-
-The data transfer to the USA is based on the standard contractual clauses of the EU Commission. Details can be found here: [Meta-contractual addendum for the transfer of European data](https://www.facebook.com/legal/EU_data_transfer_addendum) and [Standard Contractual Clauses](https://www.facebook.com/help/566994660333381?cms_id=566994660333381).  
-
-For details on how they handle your personal data, please refer to the [Instagram Privacy Policy](https://help.instagram.com/519522125107875).
-
 ##### LinkedIn
 
-We have a [profile on LinkedIn](https://www.linkedin.com/company/deuroassociation/). The provider is LinkedIn Ireland Unlimited Company, Wilton Plaza, Wilton Place, Dublin 2, Ireland. LinkedIn uses advertising cookies.  
+We have a [profile on LinkedIn](https://www.linkedin.com/company/deuro-com/). The provider is LinkedIn Ireland Unlimited Company, Wilton Plaza, Wilton Place, Dublin 2, Ireland. LinkedIn uses advertising cookies.  
 
 We would like to point out that, as the operator of these pages, we have no influence on the processing of the transmitted data by LinkedIn and are not informed about its exact content or use.  
 
