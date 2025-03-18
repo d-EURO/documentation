@@ -109,7 +109,7 @@ If you would like to receive the newsletter offered on the website, we require a
 
 We maintain publicly accessible profiles on social media networks. The individual social media networks we use are listed below.  
 
-Social media networks such as Facebook, Instagram, etc., can generally analyze your user behavior comprehensively when you visit their website or a website with integrated social media content (e.g., like buttons or advertising banners). Visiting our social media presences triggers numerous data protection-relevant processing operations.  
+Social media networks such as LinkedIn, Instagram, etc., can generally analyze your user behavior comprehensively when you visit their website or a website with integrated social media content (e.g., like buttons or advertising banners). Visiting our social media presences triggers numerous data protection-relevant processing operations.  
 
 If you are logged into your social media account and visit our social media presence, the operator of the social media portal can assign this visit to your user account. However, your personal data may also be collected if you are not logged in or do not have an account with the respective social media portal. In this case, this data collection takes place, for example, via cookies that are stored on your end device or by recording your IP address.  
 
@@ -124,18 +124,6 @@ The data collected directly by us via the social media presence will be deleted 
 We have no influence on the storage period of your data that is stored by the operators of social media networks for their own purposes. For details, please contact the operators of the social media networks directly (e.g., in their privacy policies and statements, see below).
 
 #### Social Media Networks in Detail
-
-##### Facebook
-
-We have a [profile on Facebook](https://www.facebook.com/dEUROAssociation/). The provider of this service is Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Ireland. According to Facebook, the data collected is also transferred to the USA and other third countries.  
-
-We have concluded an agreement with Facebook on joint processing (Controller Addendum). This agreement specifies which data processing operations we or Facebook are responsible for when you visit our Facebook page. You can view this agreement at the following link: [Information on Page Insights](https://www.facebook.com/legal/terms/page_controller_addendum).  
-
-**You can customize your advertising settings yourself in your user account. To do this, click on the following link and log in:** [Personalization of your user account on Facebook](https://www.facebook.com/settings?tab=ads).  
-
-Data transfer to the USA is based on the standard contractual clauses of the EU Commission. Details can be found here: [Contractual Addendum for the Transfer of European Data](https://www.facebook.com/legal/EU_data_transfer_addendum) and [Standard Contractual Clauses](https://de-de.facebook.com/help/566994660333381).  
-
-For details, please refer to the [Facebook Privacy Policy](https://www.facebook.com/about/privacy).
 
 ##### X
 
