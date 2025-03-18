@@ -18,7 +18,7 @@ The responsible body for data processing is:
 
 **dEURO Association**  
 Address: (ADRESSE) 
-Website: (https://deuro.com/)  
+Website: https://deuro.com/  
 Electronic contact: (EMAIL)  
 
 ## 2. General Information on Data Protection
