@@ -17,7 +17,7 @@ In case of discrepancies, the English version of this policy will prevail unless
 The responsible body for data processing is:  
 
 **dEURO Association**  
-Address: (ADRESSE) 
+Address: (ADRESSE)  
 Website: https://deuro.com/  
 Electronic contact: (EMAIL)  
 
