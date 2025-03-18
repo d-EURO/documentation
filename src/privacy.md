@@ -123,7 +123,7 @@ The data collected directly by us via the social media presence will be deleted 
 
 We have no influence on the storage period of your data that is stored by the operators of social media networks for their own purposes. For details, please contact the operators of the social media networks directly (e.g., in their privacy policies and statements, see below).
 
-#### Social Media Networks in Detail
+### Social Media Networks in Detail
 
 ##### X
 
