@@ -1,7 +1,7 @@
 # Imprint
 
 dEURO Association  
-Bahnhofstrasse 7  
+(STRASSE NUMMER)  
 6300 Zug  
 Switzerland  
 
