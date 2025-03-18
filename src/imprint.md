@@ -1,11 +1,10 @@
 # Imprint
 
 dEURO Association  
-(STRASSE NUMMER)  
+Bahnhofstraße 7  
 6300 Zug  
 Switzerland  
-
-Commercial Register: (NUMMER)  
+ 
 Registration court: Zug
 
-Electronic contact with the dEURO Association is possible by emailing (EMAIL)
+Electronic contact with the dEURO Association is possible by emailing info@deuro.com
