@@ -13,3 +13,6 @@
   * [Borrowers Reserve](reserve/borrowers-reserve.md)
 * [Governance](governance.md)
 * [Background FAQ](faq.md)
+* [Disclaimer](disclaimer.md)
+* [Privacy](privacy.md)
+* [Imprint](imprint.md)
