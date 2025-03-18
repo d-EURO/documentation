@@ -39,13 +39,13 @@ Some of the data is collected to ensure that the website and dEURO Association s
 
 You have the right to receive information about the origin, recipient, and purpose of your stored personal data free of charge at any time. You also have the right to request the correction or deletion of this data. If you have given your consent to data processing, you can revoke this consent at any time for the future. You also have the right to request the restriction of the processing of your personal data under certain circumstances. Furthermore, you have the right to lodge a complaint with the competent supervisory authority.  
 
-You can contact our support team at [Insert Contact, e.g., support@deuro.org] at any time with regard to this and other questions on the subject of data protection.
+You can contact our support team at (EMAIL) at any time with regard to this and other questions on the subject of data protection.
 
 ## 3. Hosting
 
 ### Hosting with All-Inkl
 
-We host our website with All-Inkl. The provider is ALL-INKL.COM - Neue Medien Münnich, owner René Münnich, Hauptstraße 68, 02742 Friedersdorf, Germany (hereinafter: All-Inkl). Details can be found in the [privacy policy of All-Inkl](https://all-inkl.com/datenschutzinformationen/).
+We host our website with (WEBSITE-HOST)
 
 ## 4. General Notes and Mandatory Information
 
