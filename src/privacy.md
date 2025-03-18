@@ -17,9 +17,9 @@ In case of discrepancies, the English version of this policy will prevail unless
 The responsible body for data processing is:  
 
 **dEURO Association**  
-Address: (ADRESSE)  
+Address: Bahnhofstraße 7, Zug, Switzerland 
 Website: https://deuro.com/  
-Electronic contact: (EMAIL)  
+Electronic contact (email): info@deuro.com  
 
 ## 2. General Information on Data Protection
 
@@ -39,11 +39,11 @@ Some of the data is collected to ensure that the website and dEURO Association s
 
 You have the right to receive information about the origin, recipient, and purpose of your stored personal data free of charge at any time. You also have the right to request the correction or deletion of this data. If you have given your consent to data processing, you can revoke this consent at any time for the future. You also have the right to request the restriction of the processing of your personal data under certain circumstances. Furthermore, you have the right to lodge a complaint with the competent supervisory authority.  
 
-You can contact our support team at (EMAIL) at any time with regard to this and other questions on the subject of data protection.
+You can contact our support team at info@deuro.com at any time with regard to this and other questions on the subject of data protection.
 
 ## 3. Hosting
 
-### Hosting with All-Inkl
+### Hosting with (WEBSITE-HOST)
 
 We host our website with (WEBSITE-HOST)
 
