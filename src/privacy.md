@@ -19,7 +19,7 @@ The responsible body for data processing is:
 **dEURO Association**  
 Address: Bahnhofstraße 7, Zug, Switzerland 
 Website: https://deuro.com/  
-Electronic contact (email): info@deuro.com  
+Electronic contact via email: info@deuro.com  
 
 ## 2. General Information on Data Protection
 
