@@ -8,4 +8,4 @@ Switzerland
 Commercial Register: (NUMMER)  
 Registration court: Zug
 
-Electronic contact with the dEURO Association is possible by contacting (EMAIL)
+Electronic contact with the dEURO Association is possible by emailing (EMAIL)
