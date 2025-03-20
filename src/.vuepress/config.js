@@ -53,7 +53,9 @@ module.exports = {
 
 
       { title: "Telegram API Bot", path: "/telegram-api-bot" },
-
+      { title:  "Disclaimer", path: "/disclaimer" },
+      { title: "Privacy", path: "/privacy" },
+      { title: "Imprint", path: "/imprint" },
       { title: "FAQ", path: "/faq" },
 
     ],
