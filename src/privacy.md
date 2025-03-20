@@ -43,9 +43,9 @@ You can contact our support team at info@deuro.com at any time with regard to th
 
 ## 3. Hosting
 
-### Hosting with (WEBSITE-HOST)
+### Hosting with All-Inkl
 
-We host our website with (WEBSITE-HOST)
+We host our website with All-Inkl. The provider is ALL-INKL.COM - Neue Medien Münnich, owner René Münnich, Hauptstraße 68, 02742 Friedersdorf (hereinafter: All-Inkl). Details can be found in the [privacy policy of All-Inkl](https://all-inkl.com/datenschutzinformationen/).
 
 ## 4. General Notes and Mandatory Information
 
