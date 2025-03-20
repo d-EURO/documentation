@@ -12,4 +12,7 @@
   * [Pool Shares](reserve/pool-shares.md)
   * [Borrowers Reserve](reserve/borrowers-reserve.md)
 * [Governance](governance.md)
+* [Disclaimer](disclaimer.md)
+* [Privacy](privacy.md)
+* [Imprint](imprint.md)
 * [Background FAQ](faq.md)
