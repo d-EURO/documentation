@@ -9,8 +9,15 @@ module.exports = {
     ["meta", { name: "theme-color", content: "#092f62" }],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "black" }],
-    ["script", { type: "text/javascript", src: "https://cdn.weglot.com/weglot.min.js" }],
-    ["script", {}, `Weglot.initialize({ api_key: 'wg_7f9157a1a49a3f646f90478c579242547' });`],
+    [ "script", { type: "text/javascript", src: "https://cdn.weglot.com/weglot.min.js" }, ],
+    [
+      "script",
+      {},
+      `Weglot.initialize({
+        api_key: 'wg_3fa7772719c0808c3a058c58e13b59890'
+      });
+      `,
+    ],
   ],
 
   themeConfig: {
