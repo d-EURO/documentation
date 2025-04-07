@@ -14,7 +14,7 @@ module.exports = {
       "script",
       {},
       `Weglot.initialize({
-        api_key: 'wg_b90707b33408651111250731dd46d8bc9'
+        api_key: 'wg_3fa7772719c0808c3a058c58e13b59890'
       });
       `,
     ],
