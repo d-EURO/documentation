@@ -5,7 +5,7 @@
 
 The governance system is subject to the following rules:
 
-1. Anyone can make proposals. Making a proposal costs a fee of at least 1000 dEURO. There might also be a higher soft limit by convention, which is not enforced in the smart contracts, but socially by vetoing proposals that paid a fee below what is generally considered appropriate.
+1. Anyone can make proposals. Making a proposal costs a fee of at least 1000 Decentralized Euro. There might also be a higher soft limit by convention, which is not enforced in the smart contracts, but socially by vetoing proposals that paid a fee below what is generally considered appropriate.
 2. Proposal for new minting modules pass after a minimum 14 days unless someone vetoes them. When proposing new types of collateral in the minting hub, that duration is at least 3 days. These are minimum durations. When making a proposal, it is recommended to give the system participants significantly more time to assess the proposal in order to avoid being vetoed immediately due to a lack of time for discussion.
 3. Anyone with more than q = 2% of the total votes V has veto power, i.e. a user with v votes can veto if v > qV holds.
 4. The number of votes of a user is calculated by multiplying their Native Decentralized Euro Protocol Shares with the time they have held them. If shares are moved to a new address, their associated votes are reset to zero.
