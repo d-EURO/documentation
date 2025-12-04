@@ -10,9 +10,9 @@ System participants should closely watch the amount of other stablecoins flowing
 The bridges can be viewed on the blockchain under the following links:
 
 * EURC: https://etherscan.io/address/0xD03cD3ea55e67bC61b78a0d70eE93018e2182Dbe#code
-* EURS: https://etherscan.io/address/0x0423F419De1c44151B6b000e2dAA51859C1D5d2A#code
-* VEUR: https://etherscan.io/address/0x3Ed40fA0E5C803e807eBD51355E388006f9E1fEE#code
+* EURS: https://etherscan.io/address/0x73f38ca06b27eaefb1612d062d885f58924f5897#code
+* VEUR: https://etherscan.io/address/0x76d8f514554a4a8e5d6103875f2dd7a67543692b#code
 * EUROP: https://etherscan.io/address/0x3EF3d03EFCc1338d6210946f8cF5Fb1a8b630341#code
 * EURI: https://etherscan.io/address/0xb66A40934a996373fA7602de9820C6bf3e8c9afE#code
-* EURe: https://etherscan.io/address/0xdC6450e91f49048FBFF5F424046985fa03BE0130#code
+* EURe: https://etherscan.io/address/0x4dfd460d54854087af195906a2f260aa483a13b1#code
 * EURR: https://etherscan.io/address/0x20B0a153fF16c7B1e962FD3D3352A00cf019f1a7#code
