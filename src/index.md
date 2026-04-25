@@ -10,6 +10,7 @@
 * [Reserve](reserve.md)
   * [Pool Shares](reserve/pool-shares.md)
 * [Governance](governance.md)
+* [Smart Contracts](smart-contracts.md)
 * [Disclaimer](disclaimer.md)
 * [Privacy](privacy.md)
 * [Imprint](imprint.md)
