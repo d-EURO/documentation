@@ -1,5 +1,34 @@
 # Forensische Analyse: Forced-Sale-Angriff auf MintingHubV3 vom 25. April 2026
 
+## TL;DR — Der Bug
+
+**`MintingHub.clone()` erzwingt keine Mindest-Lebensdauer für Klon-Positionen.** Der Aufrufer darf jede `expiration ≤ parent.expiration` setzen — auch eine, die den Klon nach Sekunden ablaufen lässt. Damit lässt sich der Forced-Sale-Pfad zweckentfremden:
+
+1. Klone eine bestehende Eltern-Position auf einem illiquiden, mispricten Collateral
+2. Setze die Klon-Expiration auf wenige Sekunden nach Creation
+3. Hebe den vollen Principal als dEURO ab (`_initialMint`)
+4. Warte, bis der `expiredPurchasePrice` linear gegen 0 dekayt
+5. Kaufe deine eigene Collateral via `MintingHubGateway.buyExpiredCollateral` für einen Bruchteil des Origin-Preises zurück
+6. Den nicht aus den Erlösen gedeckten Rest-Principal absorbiert die Equity-Reserve über `coverLoss` — die nDEPS-Halter zahlen
+
+**Konkret in dieser TX:** Klon-Lifetime 36 Sekunden, 46 Stunden Wartezeit, Decay auf 6,8 % des Origin-Preises (85,29 dEURO/WFPS statt 1 250), Loss von **4 623,86 dEURO** (netto 4 621,21 dEURO) an die Equity-Reserve. Geplante Stage 2 mit zusätzlichem Drain revertete (`"WFPS not received"`).
+
+**Strukturell** sind 16 offene WFPS-Positionen mit zusammen **884 873,66 dEURO Principal** demselben Vektor ausgesetzt, weil jede von ihnen als Eltern für einen kurzlebigen Klon dienen kann. Aktuell läuft kein zweiter Angriff — das Wallet-Cluster ist seit 25. April 2026 20:43 UTC inaktiv —, aber der Vektor steht offen, bis `clone()` gehärtet wird.
+
+**Fix-Skizze:**
+
+```solidity
+// MintingHub.clone(): Mindest-Lifetime erzwingen
+require(
+    expiration >= block.timestamp + challengePeriod + cooldown + MIN_ECONOMIC_WINDOW,
+    "ExpirationTooEarly"
+);
+```
+
+Zusätzlich sinnvoll: Floor in `expiredPurchasePrice` (z. B. 30 % des Origin-Preises) und Re-Mint-Cooldown nach `buyExpiredCollateral`.
+
+---
+
 **Status:** Interne Sicherheitsanalyse
 **Erstellt:** 26. April 2026 · überarbeitet 26. April 2026
 **Netzwerk:** Ethereum Mainnet
