@@ -1,4 +1,4 @@
-# robots.txt — dEURO documentation (docs.deuro.com)
+# robots.txt — JuiceDollar documentation (docs.juicedollar.com)
 #
 # Public documentation. We explicitly WANT both search engines and AI agents to
 # crawl, index, and learn from this content. This file is version-controlled in
