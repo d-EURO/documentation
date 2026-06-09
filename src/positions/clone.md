@@ -16,4 +16,4 @@ Note that a fraction of what you borrow does not go to your wallet but is sent t
 
 Interest accrues continuously on the position and is settled when you repay, modify, or close it. The annual rate of the clone is synced with the current Leadrate plus the parent's risk premium at the time of cloning. The difference between V2 and V3 is the base on which the rate is charged: V3 charges interest only on the usable mint (principal minus the reserve contribution), V2 charges it on the full minted amount.
 
-A small fee is also taken on the minted amount and added to the system's equity reserve.
+When interest is eventually paid, it is collected as protocol profit via `dEURO.collectProfits()` and accrues to the equity reserve — increasing the price of nDEPS. There is no separate fee deducted at minting time.

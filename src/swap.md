@@ -56,7 +56,7 @@ uint256 public immutable limit;
 uint256 public minted;
 ```
 
-`limit` caps the maximum amount of dEURO that can be minted through this bridge. This prevents over-reliance on any single external stablecoin. All currently deployed dEURO bridges are configured with a 1,000,000 dEURO limit at launch; governance can replace a bridge with a higher-limit successor.
+`limit` caps the maximum amount of dEURO that can be minted through this bridge. This prevents over-reliance on any single external stablecoin. Limits vary per bridge and are chosen by governance when the bridge is proposed — the initial bridges at launch were configured with a 1,000,000 dEURO limit, later bridges have been deployed with smaller limits (e.g. 100,000 dEURO) that governance can raise via a replacement bridge if demand grows.
 
 ### Time Horizon
 
@@ -99,9 +99,9 @@ The higher 10% quorum prevents abuse while still allowing rapid response to genu
 ## Bridge Monitoring
 
 ```solidity
-function usd()      external view returns (IERC20)      // source stablecoin
+function eur()      external view returns (IERC20)      // source stablecoin
 function dEURO()    external view returns (IDecentralizedEURO)
-function horizon()  external view returns (uint256)     // expiration
+function horizon()  external view returns (uint256)     // expiration timestamp
 function limit()    external view returns (uint256)     // max mintable
 function minted()   external view returns (uint256)     // currently minted
 function stopped()  external view returns (bool)

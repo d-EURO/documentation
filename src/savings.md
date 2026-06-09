@@ -184,7 +184,7 @@ With daily compound ≈ 32.96 dEURO (slightly more)
 
 ## Important Notes
 
-1. **Module disabled when rate is zero** — savings module deposits are blocked while the Leadrate is 0% or is about to drop to 0% within 3 days.
+1. **Module disabled when rate is zero** — savings module deposits revert with `ModuleDisabled` once the Leadrate is 0%. The contract also pre-empts a queued 0% rate change: as soon as the 7-day timelock to a proposed 0% rate has elapsed (so `applyChange()` is callable), new deposits are already blocked.
 2. **Interest cap** — interest payments are capped by available equity. In extreme scenarios, you may receive less than expected.
 3. **No deposit insurance** — unlike traditional bank deposits, there is no insurance. The safety of your funds depends on the overall health of the dEURO system.
 4. **Gas costs** — consider gas costs when deciding how often to compound. For small balances, frequent refreshing may not be economical.

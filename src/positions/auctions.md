@@ -87,14 +87,14 @@ Once the Dutch auction begins in Phase 2, anyone can bid:
 
 ```solidity
 function bid(
-    uint32 _challengeNumber,
+    uint256 _challengeNumber,
     uint256 size,                    // max collateral to bid for
     bool postponeCollateralReturn    // delay return (for blacklist scenarios)
 ) external
 
 // V3 native coin return option
 function bid(
-    uint32 _challengeNumber,
+    uint256 _challengeNumber,
     uint256 size,
     bool postponeCollateralReturn,
     bool returnCollateralAsNative

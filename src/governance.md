@@ -153,7 +153,7 @@ Requirements:
 
 ## Flash Loan Protection
 
-The Equity contract includes protection against flash-loan attacks: when you receive nDEPS (through transfer or investment), the block number is recorded in `lastInboundBlock[owner]`. You cannot redeem nDEPS in the same block you received it. This prevents flash-loan attacks on governance and ensures voters have genuine exposure to the system.
+Flash-loan attacks on governance are made impossible by the 90-day minimum holding period: `redeem()` reverts with `BelowMinimumHoldingPeriod` whenever `canRedeem(owner)` returns false, and `canRedeem()` only returns true after the recipient has held the nDEPS for at least 90 days according to the contract's internal `voteAnchor`. Combined with the fact that voting power is `balance × holding duration` and a transfer resets the recipient's anchor, this means an attacker cannot flash-borrow nDEPS, vote (or veto), and redeem within the same transaction — they would have to hold the position for at least 90 days first.
 
 ## Investing in nDEPS
 
@@ -184,9 +184,8 @@ function redeemFrom(address owner, address target, uint256 shares, uint256 expec
 
 Restrictions:
 
-1. **90-day minimum holding period** — you can only redeem nDEPS once you have held them for at least 90 days. Transferring nDEPS resets this clock.
-2. **Same-block protection** — you cannot redeem in the same block you received the nDEPS.
-3. **Minimum equity** — the system must keep at least 1,000 dEURO of equity.
+1. **90-day minimum holding period** — you can only redeem nDEPS once you have held them for at least 90 days. Transferring nDEPS resets this clock. This is the same mechanism that prevents flash-loan attacks on governance.
+2. **Minimum equity** — the system must keep at least 1,000 dEURO of equity.
 
 ## Proposing System Changes
 

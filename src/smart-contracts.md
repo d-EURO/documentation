@@ -73,8 +73,7 @@ The native equity token representing shares in the dEURO reserve pool. Holding n
 - 2% quorum required for governance veto
 - Price determined by proportional capital valuation (5x equity)
 - 2% fee on minting and redemption
-- 90-day minimum holding period before redemption is permitted
-- Flash loan protection (same-block redemption blocked)
+- 90-day minimum holding period before redemption is permitted (replaces the same-block redemption guard used in Frankencoin — the holding period subsumes the flash-loan attack surface)
 
 **Key Functions:**
 - `invest()` - Mint nDEPS by depositing dEURO into the reserve
@@ -111,13 +110,13 @@ A standalone ERC-20 wrapper around nDEPS. Wrapping nDEPS into DEPS exchanges the
 - Wrapping is 1:1 in both directions; the wrapper never touches the underlying economic value.
 
 ```solidity
-function wrap(uint256 amount) external returns (uint256)
-function wrapFor(address owner, uint256 amount) external returns (uint256)
-function unwrap(uint256 amount) external returns (uint256)
-function unwrapAndSell(uint256 amount) external returns (uint256)  // unwrap and immediately redeem via Equity
+function wrap(uint256 amount) public
+function unwrap(uint256 amount) public
+function unwrapAndSell(uint256 amount) public returns (uint256)        // unwrap and immediately redeem via Equity
+function halveHoldingDuration(address[] helpers) public                 // anti-vote-accumulation, requires 2% votes
 ```
 
-`unwrapAndSell()` is provided as a convenience for redeeming directly into dEURO without first claiming the nDEPS to the caller's address. The 90-day holding period applies to the underlying nDEPS — wrapping into DEPS does **not** count as transferring nDEPS away, but reclaiming nDEPS by unwrapping resets the holding clock.
+`unwrapAndSell()` is provided as a convenience for redeeming directly into dEURO without first claiming the nDEPS to the caller's address. It bypasses the 90-day holding period of the underlying nDEPS as long as the wrapper itself has held them long enough on average and `halveHoldingDuration()` has not been called recently. Wrapping nDEPS into DEPS keeps the holding clock of the underlying nDEPS intact; unwrapping back to nDEPS, however, resets the recipient's holding clock as with any other transfer.
 
 | Property | Value |
 |----------|-------|
@@ -472,7 +471,7 @@ The dEURO smart contracts are designed with the following security properties:
 |----------|---------------|
 | **Immutability** | No admin keys, no proxy upgrades |
 | **Oracle-free** | No reliance on external price feeds |
-| **Flash loan protection** | Same-block redemption blocked |
+| **Flash loan protection** | 90-day minimum holding period on nDEPS makes flash-loan governance attacks impossible |
 | **Governance timelocks** | 7-14 day delays on critical changes |
 | **Minority protection** | 2% veto threshold |
 | **Emergency stops** | 10% quorum can halt bridges |

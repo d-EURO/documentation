@@ -146,9 +146,6 @@ function votesDelegated(address sender, address[] calldata helpers) public view 
 // Delegation
 function delegates(address owner) external view returns (address)
 
-// Flash loan protection
-function lastInboundBlock(address owner) external view returns (uint256)
-
 // Investment calculations
 function calculateShares(uint256 investment) external view returns (uint256)
 function calculateProceeds(uint256 shares) public view returns (uint256)
@@ -360,7 +357,7 @@ Individual collateralized debt position contract.
 ```solidity
 function original() external view returns (address)
 function hub() external view returns (address)
-function dEURO() external view returns (IDecentralizedEURO)
+function deuro() external view returns (IDecentralizedEURO)
 function collateral() external view returns (IERC20)
 function minimumCollateral() external view returns (uint256)
 function riskPremiumPPM() external view returns (uint24)
@@ -404,8 +401,8 @@ function isValidPriceReference(address referencePosition, uint256 newPrice) exte
 ```solidity
 function mint(address target, uint256 amount) public
 
-function repay(uint256 amount) public returns (uint256 used)
-function repayFull() external returns (uint256 used)
+function repay(uint256 amount) public returns (uint256)
+function repayFull() external returns (uint256)
 
 // V3 unified adjustment (replaces V2 `adjust(newDebt, ...)`)
 function adjust(
@@ -544,7 +541,7 @@ Interest-bearing dEURO savings. V3 (`Savings`) routes directly; V2 (`SavingsGate
 ### View Functions
 
 ```solidity
-function dEURO() external view returns (IERC20)
+function deuro() external view returns (IERC20)
 function GATEWAY() external view returns (IFrontendGateway)  // V2 only
 
 function savings(address account) external view returns (
@@ -786,8 +783,17 @@ function lendWithCoin(
     uint256 liquidationPrice
 ) external payable returns (address position)
 
-function rescueCoin(address to) external           // owner-only emergency rescue
-function rescueToken(address token, address to) external
+function lendWithCoinFor(
+    address owner,
+    address parent,
+    uint256 initialMint,
+    uint40 expiration,
+    bytes32 frontendCode,
+    uint256 liquidationPrice
+) external payable returns (address position)
+
+function rescueCoin() external                     // owner-only emergency rescue, sends to owner
+function rescueToken(address token, address to, uint256 amount) external  // owner-only
 
 // Pausable / Ownable / ReentrancyGuard standard surface
 function pause() external
