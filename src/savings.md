@@ -16,7 +16,7 @@ When you deposit dEURO into the savings module, your tokens start earning intere
 | **Governance-controlled rate** | nDEPS holders vote on the interest rate |
 | **Fully segregated** | Your saved dEURO stays attributable to you and is not used to back loans |
 
-The 3-day delay before interest begins to accrue, present in Frankencoin's design, was removed in dEURO without replacement. Interest starts at deposit time.
+The 3-day lock-up before deposits could be withdrawn, present in Frankencoin's savings design, was removed in dEURO without replacement. Deposits can be withdrawn at any time.
 
 ## The Leadrate System
 

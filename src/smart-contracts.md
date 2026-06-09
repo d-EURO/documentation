@@ -186,19 +186,21 @@ Individual collateralized debt position contract. Each position is a separate co
 
 **Interest Model:**
 
-| | V2 | V3 |
-|---|---|---|
-| When interest is paid | Up front, for the full term | Continuously accrued, paid on close/modify/repay |
-| Principal vs. interest accounting | Combined `debt` | `principal` and `interest` tracked separately; `adjust()` takes `newPrincipal` |
-| Rate base | Leadrate at mint time + risk premium, fixed for term | Leadrate at mint time + risk premium, re-synced to Leadrate whenever new tokens are minted into the position |
-| Interest base | Total minted amount | Usable mint only (principal minus reserve contribution) |
-| Collateral coverage | Principal × (1 + overcollateralization) | Same, plus interest × overcollateralization |
+Interest accrues continuously in both V2 and V3 — the up-front fee charged at mint time was a V1 (Frankencoin) characteristic that dEURO removed at launch. In both versions, `principal` and `interest` are tracked separately on the Position contract, and `adjust(newPrincipal, …)` lets owners change principal independently of the outstanding interest.
+
+V3 changed the following relative to V2:
+
+- **Native ETH/WETH** is supported directly across `MintingHub`, `Position` and `PositionRoller` (V2 needs the [CoinLendingGateway](#coinlendinggateway) for the same).
+- **Leadrate is integrated into MintingHub itself**, so positions and savings consume the same rate source (V2 inherited Leadrate via `Savings → SavingsGateway`).
+- **Interest is charged only on the usable mint** (principal minus the part held back in the borrowers reserve), not on the full minted amount.
+- **Reference positions** can be passed to `adjust*WithReference()` to skip the 3-day cooldown on a price increase when another live position has already validated a higher price.
 
 | Property | Value |
 |----------|-------|
 | **Deployment** | Via PositionFactory (ERC-1167 clones) |
 | **Cooldown on Price Increase** | 3 days (V3: waivable via reference position) |
-| **Min Position Init Period** | 3 days (V3) / 14 days (V2) |
+| **Min Position Init Period** | 3 days (V2 and V3) |
+| **Rate base** | Leadrate at mint time + risk premium, re-synced to Leadrate whenever new tokens are minted into the position |
 | **Reference Position Mechanism** *(V3)* | `adjustWithReference()` / `adjustPriceWithReference()` accept a sibling position to skip cooldown when the new price is already validated elsewhere |
 
 ---

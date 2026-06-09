@@ -24,7 +24,7 @@ On that page the form is grouped into four areas. Let's take a look at the box i
 
 <figure style="text-align: center"><img src="/assets/proposal-process.png" alt=""><figcaption><p>Proposal process</p></figcaption></figure>
 
-The proposal fee is fixed at 1,000 dEURO. This fee is not returned if the position is denied and goes to the equity holders. The price tag of 1,000 dEURO ensures that each proposal is well thought-out. Having a low fee would likely encourage the proposal of illiquid and/or otherwise unfit tokens. The initialization period must be at least **3 days** (V3) or **14 days** (V2). This gives other system participants enough time to veto or to challenge the new position. A veto can only be cast by qualified pool share holders by calling the `deny` method on the position. If a position is denied, it cannot ever be used to mint dEURO, but it can still be challenged. New positions can be challenged immediately using the normal challenge mechanism.
+The proposal fee is fixed at 1,000 dEURO. This fee is not returned if the position is denied and goes to the equity holders. The price tag of 1,000 dEURO ensures that each proposal is well thought-out. Having a low fee would likely encourage the proposal of illiquid and/or otherwise unfit tokens. The initialization period must be at least **3 days** (in both V2 and V3 minting hubs). This gives other system participants enough time to veto or to challenge the new position. A veto can only be cast by qualified pool share holders by calling the `deny` method on the position. If a position is denied, it cannot ever be used to mint dEURO, but it can still be challenged. New positions can be challenged immediately using the normal challenge mechanism.
 
 It is recommended to give the system participants significantly more than the minimum time to assess the proposal — minimum durations exist to bound the worst case, not to be defaults.
 
@@ -32,7 +32,7 @@ Next, we can inspect the box on the bottom left.
 
 <figure style="text-align: center"><img src="/assets/financial-terms.png" alt=""><figcaption><p>Financial terms</p></figcaption></figure>
 
-The annual interest rate is set by the position creator and is composed of the system's current **Leadrate** plus a **risk premium** specific to this position. In V3, interest is no longer charged up front: it accrues continuously as the position is held and must be paid when the position is closed, modified, or repaid. In V2, the entire upfront interest for the full term is deducted at minting time.
+The annual interest rate is set by the position creator and is composed of the system's current **Leadrate** plus a **risk premium** specific to this position. Interest accrues continuously while the position is open and is paid when the position is closed, modified, or repaid. In V3 the interest is charged only on the **usable mint** (the principal minus the part held back in the borrowers reserve), so the effective annual cost is slightly lower than the headline rate; in V2 the same rate applies to the full principal.
 
 The minting limit describes the maximum amount of dEURO that can be minted against this position and its clones. When the position is cloned, the remaining capacity is split between the original and the clone. The purpose is to limit the exposure of the dEURO system to a single collateral. The dEURO system should be able to withstand the total failure of one or more related collaterals, even if all their positions are maximally minted.
 

@@ -269,7 +269,7 @@ function openPosition(
     uint256 _minCollateral,
     uint256 _initialCollateral,
     uint256 _mintingMaximum,
-    uint40 _initPeriodSeconds,    // >= 3 days (V3), >= 14 days (V2)
+    uint40 _initPeriodSeconds,    // >= 3 days (V2 and V3)
     uint40 _expirationSeconds,
     uint40 _challengeSeconds,
     uint24 _riskPremium,

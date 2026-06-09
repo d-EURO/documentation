@@ -14,9 +14,6 @@ The Lending page lets you specify how much you want to borrow and shows you how 
 
 Note that a fraction of what you borrow does not go to your wallet but is sent to the borrowers reserve in your name. Unless the dEURO system suffers from large losses in the meantime, you will get that reserve back as you repay the outstanding amount.
 
-The interest model differs between the two minting hub versions:
-
-- In **V3**, interest accrues continuously on the position and is settled when you repay, modify, or close it. The annual rate of the clone is synced with the current Leadrate plus the parent's risk premium at the time of cloning.
-- In **V2**, interest is deducted up front for the entire term of the position. Closing the position early does not refund the unused portion of the upfront interest.
+Interest accrues continuously on the position and is settled when you repay, modify, or close it. The annual rate of the clone is synced with the current Leadrate plus the parent's risk premium at the time of cloning. The difference between V2 and V3 is the base on which the rate is charged: V3 charges interest only on the usable mint (principal minus the reserve contribution), V2 charges it on the full minted amount.
 
 A small fee is also taken on the minted amount and added to the system's equity reserve.
