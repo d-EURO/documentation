@@ -71,8 +71,9 @@ The native equity token representing shares in the dEURO reserve pool. Holding n
 **Key Features:**
 - ERC-20 token with time-weighted voting power
 - 2% quorum required for governance veto
-- Price determined by proportional capital valuation (3x equity)
+- Price determined by proportional capital valuation (5x equity)
 - 2% fee on minting and redemption
+- 90-day minimum holding period before redemption is permitted
 - Flash loan protection (same-block redemption blocked)
 
 **Key Functions:**
@@ -91,24 +92,39 @@ The native equity token representing shares in the dEURO reserve pool. Holding n
 |----------|-------|
 | **Symbol** | nDEPS |
 | **Decimals** | 18 |
+| **Valuation Factor** | 5x (market cap = 5 × equity) |
 | **Quorum** | 2% |
+| **Min Holding Duration** | 90 days |
+| **Min Application Period** (for `suggestMinter`) | 14 days |
+| **Min Application Fee** | 1,000 dEURO |
+| **Min Equity** | 1,000 dEURO |
 | **Address** | [`0xc71104001A3CCDA1BEf1177d765831Bd1bfE8eE6`](https://etherscan.io/address/0xc71104001A3CCDA1BEf1177d765831Bd1bfE8eE6) |
 
 ---
 
 ### DEPSwrapper (DEPS)
 
-ERC-20 wrapper around nDEPS. Wrapping strips the time-weighted voting state, which makes the wrapped DEPS suitable for AMM liquidity, custodial holdings, and other contexts where the voting mechanics of native nDEPS would be lost or distorted.
+A standalone ERC-20 wrapper around nDEPS. Wrapping nDEPS into DEPS exchanges the voting/holding mechanics for free transferability:
 
-**Key Functions:**
-- `wrap()` / `wrapFor()` - Convert nDEPS to DEPS
-- `unwrap()` / `unwrapAndSell()` - Convert DEPS back to nDEPS
+- nDEPS carries time-weighted voting power and resets the holding clock on every transfer.
+- DEPS is a plain ERC-20: transfer freely, hold custodially, deposit in AMMs, but no voting power until unwrapped.
+- Wrapping is 1:1 in both directions; the wrapper never touches the underlying economic value.
+
+```solidity
+function wrap(uint256 amount) external returns (uint256)
+function wrapFor(address owner, uint256 amount) external returns (uint256)
+function unwrap(uint256 amount) external returns (uint256)
+function unwrapAndSell(uint256 amount) external returns (uint256)  // unwrap and immediately redeem via Equity
+```
+
+`unwrapAndSell()` is provided as a convenience for redeeming directly into dEURO without first claiming the nDEPS to the caller's address. The 90-day holding period applies to the underlying nDEPS — wrapping into DEPS does **not** count as transferring nDEPS away, but reclaiming nDEPS by unwrapping resets the holding clock.
 
 | Property | Value |
 |----------|-------|
 | **Symbol** | DEPS |
 | **Decimals** | 18 |
-| **Address** | [`0x103747924E74708139a9400e4Ab4BEA79FFFA380`](https://etherscan.io/address/0x103747924E74708139a9400e4Ab4BEA79FFFA380) |
+| **Address (Mainnet)** | [`0x103747924E74708139a9400e4Ab4BEA79FFFA380`](https://etherscan.io/address/0x103747924E74708139a9400e4Ab4BEA79FFFA380) |
+| **Address (Base)** | [`0x5F674bF6d559229bDd29D642d2e0978f1E282722`](https://basescan.org/address/0x5F674bF6d559229bDd29D642d2e0978f1E282722) |
 
 ---
 
@@ -161,21 +177,29 @@ Individual collateralized debt position contract. Each position is a separate co
 
 **Key Functions:**
 - `mint()` - Mint dEURO against deposited collateral
-- `repay()` - Repay debt (interest first, then principal)
+- `repay()` - Repay debt (interest first in V3, then principal)
 - `adjust()` - All-in-one function to modify position parameters
-- `adjustPrice()` - Change the liquidation price
-- `withdrawCollateral()` - Withdraw excess collateral
-- `deny()` - Governance can deny positions during init period
+- `adjustWithReference()` *(V3)* - Same as `adjust()` but accepts a reference position that can waive the 3-day cooldown on a price increase
+- `adjustPrice()` / `adjustPriceWithReference()` *(V3)* - Change the liquidation price, optionally with a reference position
+- `withdrawCollateral()` / `withdrawCollateralAsNative()` *(V3)* - Withdraw excess collateral (native ETH variant available in V3)
+- `deny()` - Governance can deny positions during the init period
 
 **Interest Model:**
-- Interest charged on usable mint amount (principal minus reserve)
-- Rate = Leadrate + Risk Premium (set at position creation)
-- Interest must be overcollateralized by the same ratio as principal
+
+| | V2 | V3 |
+|---|---|---|
+| When interest is paid | Up front, for the full term | Continuously accrued, paid on close/modify/repay |
+| Principal vs. interest accounting | Combined `debt` | `principal` and `interest` tracked separately; `adjust()` takes `newPrincipal` |
+| Rate base | Leadrate at mint time + risk premium, fixed for term | Leadrate at mint time + risk premium, re-synced to Leadrate whenever new tokens are minted into the position |
+| Interest base | Total minted amount | Usable mint only (principal minus reserve contribution) |
+| Collateral coverage | Principal × (1 + overcollateralization) | Same, plus interest × overcollateralization |
 
 | Property | Value |
 |----------|-------|
 | **Deployment** | Via PositionFactory (ERC-1167 clones) |
-| **Cooldown on Price Increase** | 3 days |
+| **Cooldown on Price Increase** | 3 days (V3: waivable via reference position) |
+| **Min Position Init Period** | 3 days (V3) / 14 days (V2) |
+| **Reference Position Mechanism** *(V3)* | `adjustWithReference()` / `adjustPriceWithReference()` accept a sibling position to skip cooldown when the new price is already validated elsewhere |
 
 ---
 
@@ -282,7 +306,7 @@ Each Savings module ships with its own SavingsVault adapter.
 
 ### Leadrate
 
-A governance-controlled interest rate module that provides the base interest rate for the entire system. The Leadrate is implemented inside `Savings` (V3) and `SavingsGateway` (V2) - it is not a standalone deployable contract.
+The governance-controlled base interest rate of the system. `Leadrate` is an abstract base contract: in V2 it is inherited via `Savings → SavingsGateway`, and in V3 the V3 `MintingHub` inherits it directly so positions and savings consume the same rate.
 
 **Key Features:**
 - Qualified nDEPS holders can propose rate changes
@@ -291,7 +315,7 @@ A governance-controlled interest rate module that provides the base interest rat
 - Used by both Savings and Position contracts
 
 **Key Functions:**
-- `proposeChange()` - Propose a new interest rate (requires 2% voting power)
+- `proposeChange(uint24 newRatePPM, address[] helpers)` - Propose a new interest rate (requires 2% voting power)
 - `applyChange()` - Execute a pending rate change after 7 days
 - `currentTicks()` - Get accumulated interest ticks since deployment
 
@@ -299,6 +323,8 @@ A governance-controlled interest rate module that provides the base interest rat
 |----------|-------|
 | **Rate Format** | PPM (parts per million) per year |
 | **Timelock** | 7 days |
+| **Initial V2 rate** | 10% (`100000` PPM) |
+| **Initial V3 rate** | 8% (`80000` PPM) |
 
 ---
 
@@ -376,11 +402,19 @@ Manages frontend referral codes and distributes rewards to frontend operators.
 
 ### CoinLendingGateway
 
-Lets users lend native ETH against dEURO without first wrapping to WETH. Routes through the V2 MintingHub and exposes the same position lifecycle as ERC-20 collateral, but accepts and returns native ETH.
+The V2 minting hub only accepts ERC-20 collateral. To open a leveraged position backed by native ETH without first wrapping it manually, the `CoinLendingGateway` (V2 only) takes ETH via `msg.value`, wraps it to WETH internally, clones a parent WETH position, and transfers ownership to the user. It also exposes a price-adjusted clone flow for setting a custom liquidation price in the same transaction.
+
+**Key Features:**
+- Accepts native ETH directly (no manual WETH wrapping)
+- Clones the parent position and transfers ownership atomically
+- Optionally adjusts the liquidation price during clone (price adjustment in the same tx)
+- Routes through `MintingHubGateway`, so frontend codes are preserved
+
+V3 has no equivalent: the V3 `MintingHub` and `PositionRoller` support native ETH directly via their `*Native` variants and `payable` functions, removing the need for a separate gateway.
 
 | Property | Address |
 |----------|---------|
-| **Mainnet** | [`0x1DA37D613FB590eeD37520b72e9c6F0F6eee89D2`](https://etherscan.io/address/0x1DA37D613FB590eeD37520b72e9c6F0F6eee89D2) |
+| **Mainnet (V2 only)** | [`0x1DA37D613FB590eeD37520b72e9c6F0F6eee89D2`](https://etherscan.io/address/0x1DA37D613FB590eeD37520b72e9c6F0F6eee89D2) |
 
 ---
 
@@ -416,6 +450,16 @@ Lets users lend native ETH against dEURO without first wrapping to WETH. Routes 
 | Savings | [`0x7602...d3D9`](https://etherscan.io/address/0x760233b90e45d186A9A98E911B115F7F4B90d3D9) | Savings module (V3) |
 | SavingsVault | [`0x75Be...2979`](https://etherscan.io/address/0x75Beb37A3C86eE4c38931E2a9319E078da612979) | ERC-4626 savings vault (V3) |
 
+### Layer 2 Deployments
+
+dEURO is canonically minted on Ethereum mainnet. Bridged token contracts mirror the supply on Layer 2 networks via the OP Stack standard bridge (`0x4200000000000000000000000000000000000010`). See [Bridge to other Chains](bridge-to-other-chains.md) for the bridging UX.
+
+| Chain | Token | Address |
+|---|---|---|
+| Optimism | dEURO | [`0x1B5F7fA46ED0F487F049C42f374cA4827d65A264`](https://optimistic.etherscan.io/address/0x1B5F7fA46ED0F487F049C42f374cA4827d65A264) |
+| Base | dEURO | [`0x1B5F7fA46ED0F487F049C42f374cA4827d65A264`](https://basescan.org/address/0x1B5F7fA46ED0F487F049C42f374cA4827d65A264) |
+| Base | DEPS | [`0x5F674bF6d559229bDd29D642d2e0978f1E282722`](https://basescan.org/address/0x5F674bF6d559229bDd29D642d2e0978f1E282722) |
+
 ---
 
 ## Security Properties
@@ -443,3 +487,11 @@ All smart contract source code is available on GitHub:
 | Network | Chain ID | Explorer |
 |---------|----------|----------|
 | **Ethereum Mainnet** | 1 | [etherscan.io](https://etherscan.io) |
+| **Base** | 8453 | [basescan.org](https://basescan.org) |
+| **Optimism** | 10 | [optimistic.etherscan.io](https://optimistic.etherscan.io) |
+
+---
+
+## Complete Function Reference
+
+For a comprehensive listing of every public function across all contracts — full signatures, parameters, return values, events — see the **[Smart Contract Functions Reference](smart-contracts/functions.md)**.

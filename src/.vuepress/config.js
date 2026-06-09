@@ -9,6 +9,18 @@ module.exports = {
     ["meta", { name: "theme-color", content: "#092f62" }],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "black" }],
+    // Open Graph
+    ["meta", { property: "og:type", content: "website" }],
+    ["meta", { property: "og:site_name", content: "Decentralized Euro Documentation" }],
+    ["meta", { property: "og:title", content: "Decentralized Euro (dEURO) Documentation" }],
+    ["meta", { property: "og:description", content: "Decentralized Euro (dEURO) — an oracle-free, over-collateralized EUR stablecoin on Ethereum mainnet." }],
+    ["meta", { property: "og:image", content: "https://docs.dEURO.com/assets/logo.png" }],
+    ["meta", { property: "og:url", content: "https://docs.dEURO.com" }],
+    // Twitter Card
+    ["meta", { name: "twitter:card", content: "summary" }],
+    ["meta", { name: "twitter:title", content: "Decentralized Euro (dEURO) Documentation" }],
+    ["meta", { name: "twitter:description", content: "Decentralized Euro (dEURO) — an oracle-free, over-collateralized EUR stablecoin on Ethereum mainnet." }],
+    ["meta", { name: "twitter:image", content: "https://docs.dEURO.com/assets/logo.png" }],
     [ "script", { type: "text/javascript", src: "https://cdn.weglot.com/weglot.min.js" }, ],
     [
       "script",
@@ -22,7 +34,7 @@ module.exports = {
 
   themeConfig: {
     repo: "d-EURO/documentation",
-    logo: "/assets/logo.png",
+    logo: "/assets/logo.svg",
     editLinks: true,
     editLinkText: "Edit this page on Github",
     docsBranch: "develop",
@@ -47,8 +59,13 @@ module.exports = {
           "/positions/clone",
           "/positions/adjust",
           "/positions/auctions",
+          "/positions/roller",
         ],
       },
+
+      { title: "Savings & Interest", path: "/savings" },
+
+      { title: "Frontend Rewards", path: "/frontend-rewards" },
 
       { title: "Reserve", path: "/reserve",
         children: [
@@ -58,7 +75,13 @@ module.exports = {
 
       { title: "Governance", path: "/governance" },
 
-      { title: "Smart Contracts", path: "/smart-contracts" },
+      { title: "Smart Contracts", path: "/smart-contracts",
+        children: [
+          "/smart-contracts/functions",
+        ],
+      },
+
+      { title: "Bridge to other Chains", path: "/bridge-to-other-chains" },
 
       { title: "Telegram API Bot", path: "/telegram-api-bot" },
       { title:  "Disclaimer", path: "/disclaimer" },
