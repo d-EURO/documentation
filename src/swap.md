@@ -72,34 +72,6 @@ Every bridge has an expiration date. After this time:
 
 Forcing periodic review of every connected stablecoin gives nDEPS holders the chance to phase out compromised issuers without the contract carrying long-term risk on its own.
 
-## Emergency Stop
-
-::: warning NOT ON DEPLOYED BRIDGES
-The emergency-stop mechanism exists in the current `StablecoinBridge.sol` source and applies to **future bridge deployments**. The nine bridges currently deployed on mainnet predate it — they expose no `stopped()` or `emergencyStop()` function (calls revert). For the live bridges, the `horizon` expiry is the only built-in wind-down mechanism.
-:::
-
-If the source stablecoin behind a bridge is compromised (depeg, fraud, regulatory action), qualified nDEPS holders can permanently stop the bridge.
-
-```solidity
-function emergencyStop(
-    address[] calldata _helpers,
-    string calldata _message
-) external
-```
-
-Requirements:
-
-- Caller needs **10% of total voting power** (higher than the normal 2% quorum).
-- Helpers array must be sorted and valid.
-- Once stopped, the bridge cannot be reactivated.
-
-When `stopped = true`:
-
-- `mint()` and `mintTo()` are permanently disabled.
-- `burn()` and `burnAndSend()` still work — users can always retrieve their deposited stablecoins.
-
-The higher 10% quorum prevents abuse while still allowing rapid response to genuine emergencies.
-
 ## Bridge Monitoring
 
 ```solidity
@@ -108,14 +80,12 @@ function dEURO()    external view returns (IDecentralizedEURO)
 function horizon()  external view returns (uint256)     // expiration timestamp
 function limit()    external view returns (uint256)     // max mintable
 function minted()   external view returns (uint256)     // currently minted
-function stopped()  external view returns (bool)        // future deployments only — reverts on the live bridges
 ```
 
 | Metric | Healthy | Warning |
 |---|---|---|
 | `minted / limit` | < 80% | > 90% |
 | Time to `horizon` | > 30 days | < 7 days (or already expired) |
-| `stopped` (future deployments) | false | true |
 
 | Flow direction | Interpretation |
 |---|---|
@@ -150,11 +120,3 @@ A new bridge enters the system through the standard minter application process:
 3. If no qualified nDEPS holder vetoes during the application period, the bridge becomes an authorised minter and is usable.
 
 Criteria nDEPS holders look at when accepting or vetoing a bridge include the credibility of the issuer, available on-chain liquidity, the regulatory exposure of the underlying stablecoin, and whether the new bridge would dangerously concentrate dEURO backing into a single issuer.
-
-## Events
-
-```solidity
-event EmergencyStopped(address indexed caller, string message)
-```
-
-The `EmergencyStopped` event is only emitted by future bridge deployments that include the emergency-stop mechanism — the currently deployed bridges do not have it (see the warning above).

@@ -339,20 +339,10 @@ Enables 1:1 conversion between trusted external EUR stablecoins and dEURO.
 - Mints dEURO by depositing source stablecoins
 - Burns dEURO to retrieve source stablecoins
 - Has maximum limit and expiration horizon
-- Emergency stop with 10% governance power (current source only — not present on the deployed bridges, see below)
 
 **Key Functions:**
 - `mint()` - Convert source stablecoin to dEURO
 - `burn()` - Convert dEURO back to source stablecoin
-- `emergencyStop()` - Permanently stop bridge (requires 10% votes; future deployments only)
-
-| Property | Value |
-|----------|-------|
-| **Emergency Quorum** | 10% (future deployments only) |
-
-::: warning EMERGENCY STOP NOT ON DEPLOYED BRIDGES
-The nine bridges deployed on mainnet predate the emergency-stop mechanism — `stopped()` and `emergencyStop()` revert on all of them. For the live bridges, the `horizon` expiry is the only built-in wind-down mechanism.
-:::
 
 #### EUR Stablecoin Bridges
 
@@ -480,7 +470,7 @@ The dEURO smart contracts are designed with the following security properties:
 | **Flash loan protection** | 90-day minimum holding period on nDEPS makes flash-loan governance attacks impossible |
 | **Governance timelocks** | 7-14 day delays on critical changes |
 | **Minority protection** | 2% veto threshold |
-| **Emergency stops** | 10% quorum can halt bridges (future bridge deployments; live bridges wind down via `horizon` expiry) |
+| **Bridge expiry** | Every bridge winds down automatically at its `horizon` |
 | **Inflation attack mitigation** | ERC-4626 virtual shares pattern |
 
 ---

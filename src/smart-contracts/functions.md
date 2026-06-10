@@ -654,16 +654,6 @@ function decimals() public view returns (uint8)  // 18
 
 1:1 conversion bridge between an external EUR stablecoin and dEURO.
 
-::: warning DEPLOYED BRIDGES DIFFER
-This section documents the current `StablecoinBridge.sol` source. The nine bridges deployed on mainnet predate the emergency-stop mechanism: `stopped()`, `emergencyStop()` and the `EmergencyStopped` event are **not present** on them (calls revert). `eur()`, `horizon()`, `limit()` and `minted()` work on all deployed bridges.
-:::
-
-### Constants
-
-| Name | Type | Value | Description |
-|---|---|---|---|
-| `EMERGENCY_QUORUM` | uint32 | 1,000 (10%) | Required votes for emergency stop |
-
 ### View Functions
 
 ```solidity
@@ -672,7 +662,6 @@ function dEURO() external view returns (IDecentralizedEURO)
 function horizon() external view returns (uint256)
 function limit() external view returns (uint256)
 function minted() external view returns (uint256)
-function stopped() external view returns (bool)
 ```
 
 ### State-Changing Functions
@@ -683,17 +672,6 @@ function mintTo(address target, uint256 amount) public
 
 function burn(uint256 amount) external
 function burnAndSend(address target, uint256 amount) external
-
-function emergencyStop(
-    address[] calldata _helpers,
-    string calldata _message
-) external
-```
-
-### Events
-
-```solidity
-event EmergencyStopped(address indexed caller, string message);
 ```
 
 ---
