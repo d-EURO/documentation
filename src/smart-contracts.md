@@ -339,30 +339,36 @@ Enables 1:1 conversion between trusted external EUR stablecoins and dEURO.
 - Mints dEURO by depositing source stablecoins
 - Burns dEURO to retrieve source stablecoins
 - Has maximum limit and expiration horizon
-- Emergency stop available with 10% governance power
+- Emergency stop with 10% governance power (current source only — not present on the deployed bridges, see below)
 
 **Key Functions:**
 - `mint()` - Convert source stablecoin to dEURO
 - `burn()` - Convert dEURO back to source stablecoin
-- `emergencyStop()` - Permanently stop bridge (requires 10% votes)
+- `emergencyStop()` - Permanently stop bridge (requires 10% votes; future deployments only)
 
 | Property | Value |
 |----------|-------|
-| **Emergency Quorum** | 10% |
+| **Emergency Quorum** | 10% (future deployments only) |
 
-#### Active EUR Stablecoin Bridges
+::: warning EMERGENCY STOP NOT ON DEPLOYED BRIDGES
+The nine bridges deployed on mainnet predate the emergency-stop mechanism — `stopped()` and `emergencyStop()` revert on all of them. For the live bridges, the `horizon` expiry is the only built-in wind-down mechanism.
+:::
 
-| Source | Bridge Address | Underlying Token |
-|--------|----------------|------------------|
-| **EURT** | [`0x2353D16869F717BFCD22DaBc0ADbf4Dca62C609f`](https://etherscan.io/address/0x2353D16869F717BFCD22DaBc0ADbf4Dca62C609f) | [`0xC581b735A1688071A1746c968e0798D642EDE491`](https://etherscan.io/address/0xC581b735A1688071A1746c968e0798D642EDE491) |
-| **EURS** | [`0x73f38ca06b27eaefb1612d062d885f58924f5897`](https://etherscan.io/address/0x73f38ca06b27eaefb1612d062d885f58924f5897) | [`0xdb25f211ab05b1c97d595516f45794528a807ad8`](https://etherscan.io/address/0xdb25f211ab05b1c97d595516f45794528a807ad8) |
-| **VEUR** | [`0x76d8f514554a4a8e5d6103875f2dd7a67543692b`](https://etherscan.io/address/0x76d8f514554a4a8e5d6103875f2dd7a67543692b) | [`0x6ba75d640bebfe5da1197bb5a2aff3327789b5d3`](https://etherscan.io/address/0x6ba75d640bebfe5da1197bb5a2aff3327789b5d3) |
-| **EURC** | [`0xB4fF7412f08C22d7381885e8BdA9EE9825092fd1`](https://etherscan.io/address/0xB4fF7412f08C22d7381885e8BdA9EE9825092fd1) | [`0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c`](https://etherscan.io/address/0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c) |
-| **EURR** | [`0x20B0a153fF16c7B1e962FD3D3352A00cf019f1a7`](https://etherscan.io/address/0x20B0a153fF16c7B1e962FD3D3352A00cf019f1a7) | [`0x50753CfAf86c094925Bf976f218D043f8791e408`](https://etherscan.io/address/0x50753CfAf86c094925Bf976f218D043f8791e408) |
-| **EUROP** | [`0x3EF3d03EFCc1338d6210946f8cF5Fb1a8b630341`](https://etherscan.io/address/0x3EF3d03EFCc1338d6210946f8cF5Fb1a8b630341) | [`0x888883b5F5D21fb10Dfeb70e8f9722B9FB0E5E51`](https://etherscan.io/address/0x888883b5F5D21fb10Dfeb70e8f9722B9FB0E5E51) |
-| **EURI** | [`0xb66A40934a996373fA7602de9820C6bf3e8c9afE`](https://etherscan.io/address/0xb66A40934a996373fA7602de9820C6bf3e8c9afE) | [`0x9d1A7A3191102e9F900Faa10540837ba84dCBAE7`](https://etherscan.io/address/0x9d1A7A3191102e9F900Faa10540837ba84dCBAE7) |
-| **EURE** | [`0x4dfd460d54854087af195906a2f260aa483a13b1`](https://etherscan.io/address/0x4dfd460d54854087af195906a2f260aa483a13b1) | [`0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f`](https://etherscan.io/address/0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f) |
-| **EURA** | [`0x05620F4bB92246b4e067EBC0B6f5c7FF6B771702`](https://etherscan.io/address/0x05620F4bB92246b4e067EBC0B6f5c7FF6B771702) | [`0x1a7e4e63778b4f12a199c062f3efdd288afcbce8`](https://etherscan.io/address/0x1a7e4e63778b4f12a199c062f3efdd288afcbce8) |
+#### EUR Stablecoin Bridges
+
+Bridges whose `horizon` has passed are **expired**: minting reverts, burning dEURO back into the underlying stablecoin keeps working. Status as of the on-chain `horizon()` values (see [Swap](swap.md#eur-stablecoin-bridges) for details):
+
+| Source | Bridge Address | Underlying Token | Status |
+|--------|----------------|------------------|--------|
+| **EURT** | [`0x2353D16869F717BFCD22DaBc0ADbf4Dca62C609f`](https://etherscan.io/address/0x2353D16869F717BFCD22DaBc0ADbf4Dca62C609f) | [`0xC581b735A1688071A1746c968e0798D642EDE491`](https://etherscan.io/address/0xC581b735A1688071A1746c968e0798D642EDE491) | Expired 2025-04-03 |
+| **EURS** | [`0x73f38ca06b27eaefb1612d062d885f58924f5897`](https://etherscan.io/address/0x73f38ca06b27eaefb1612d062d885f58924f5897) | [`0xdb25f211ab05b1c97d595516f45794528a807ad8`](https://etherscan.io/address/0xdb25f211ab05b1c97d595516f45794528a807ad8) | Active until 2026-11-05 |
+| **VEUR** | [`0x76d8f514554a4a8e5d6103875f2dd7a67543692b`](https://etherscan.io/address/0x76d8f514554a4a8e5d6103875f2dd7a67543692b) | [`0x6ba75d640bebfe5da1197bb5a2aff3327789b5d3`](https://etherscan.io/address/0x6ba75d640bebfe5da1197bb5a2aff3327789b5d3) | Active until 2026-11-05 |
+| **EURC** | [`0xB4fF7412f08C22d7381885e8BdA9EE9825092fd1`](https://etherscan.io/address/0xB4fF7412f08C22d7381885e8BdA9EE9825092fd1) | [`0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c`](https://etherscan.io/address/0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c) | Active until 2026-09-05 |
+| **EURR** | [`0x20B0a153fF16c7B1e962FD3D3352A00cf019f1a7`](https://etherscan.io/address/0x20B0a153fF16c7B1e962FD3D3352A00cf019f1a7) | [`0x50753CfAf86c094925Bf976f218D043f8791e408`](https://etherscan.io/address/0x50753CfAf86c094925Bf976f218D043f8791e408) | Expired 2025-10-22 |
+| **EUROP** | [`0x3EF3d03EFCc1338d6210946f8cF5Fb1a8b630341`](https://etherscan.io/address/0x3EF3d03EFCc1338d6210946f8cF5Fb1a8b630341) | [`0x888883b5F5D21fb10Dfeb70e8f9722B9FB0E5E51`](https://etherscan.io/address/0x888883b5F5D21fb10Dfeb70e8f9722B9FB0E5E51) | Expired 2025-10-22 |
+| **EURI** | [`0xb66A40934a996373fA7602de9820C6bf3e8c9afE`](https://etherscan.io/address/0xb66A40934a996373fA7602de9820C6bf3e8c9afE) | [`0x9d1A7A3191102e9F900Faa10540837ba84dCBAE7`](https://etherscan.io/address/0x9d1A7A3191102e9F900Faa10540837ba84dCBAE7) | Expired 2025-10-22 |
+| **EURE** | [`0x4dfd460d54854087af195906a2f260aa483a13b1`](https://etherscan.io/address/0x4dfd460d54854087af195906a2f260aa483a13b1) | [`0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f`](https://etherscan.io/address/0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f) | Active until 2026-11-05 |
+| **EURA** | [`0x05620F4bB92246b4e067EBC0B6f5c7FF6B771702`](https://etherscan.io/address/0x05620F4bB92246b4e067EBC0B6f5c7FF6B771702) | [`0x1a7e4e63778b4f12a199c062f3efdd288afcbce8`](https://etherscan.io/address/0x1a7e4e63778b4f12a199c062f3efdd288afcbce8) | Expired 2026-01-15 |
 
 ---
 
@@ -474,7 +480,7 @@ The dEURO smart contracts are designed with the following security properties:
 | **Flash loan protection** | 90-day minimum holding period on nDEPS makes flash-loan governance attacks impossible |
 | **Governance timelocks** | 7-14 day delays on critical changes |
 | **Minority protection** | 2% veto threshold |
-| **Emergency stops** | 10% quorum can halt bridges |
+| **Emergency stops** | 10% quorum can halt bridges (future bridge deployments; live bridges wind down via `horizon` expiry) |
 | **Inflation attack mitigation** | ERC-4626 virtual shares pattern |
 
 ---

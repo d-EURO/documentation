@@ -654,6 +654,10 @@ function decimals() public view returns (uint8)  // 18
 
 1:1 conversion bridge between an external EUR stablecoin and dEURO.
 
+::: warning DEPLOYED BRIDGES DIFFER
+This section documents the current `StablecoinBridge.sol` source. The nine bridges deployed on mainnet predate the emergency-stop mechanism: `stopped()`, `emergencyStop()` and the `EmergencyStopped` event are **not present** on them (calls revert). `eur()`, `horizon()`, `limit()` and `minted()` work on all deployed bridges.
+:::
+
 ### Constants
 
 | Name | Type | Value | Description |

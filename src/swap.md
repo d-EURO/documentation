@@ -74,6 +74,10 @@ Forcing periodic review of every connected stablecoin gives nDEPS holders the ch
 
 ## Emergency Stop
 
+::: warning NOT ON DEPLOYED BRIDGES
+The emergency-stop mechanism exists in the current `StablecoinBridge.sol` source and applies to **future bridge deployments**. The nine bridges currently deployed on mainnet predate it — they expose no `stopped()` or `emergencyStop()` function (calls revert). For the live bridges, the `horizon` expiry is the only built-in wind-down mechanism.
+:::
+
 If the source stablecoin behind a bridge is compromised (depeg, fraud, regulatory action), qualified nDEPS holders can permanently stop the bridge.
 
 ```solidity
@@ -104,14 +108,14 @@ function dEURO()    external view returns (IDecentralizedEURO)
 function horizon()  external view returns (uint256)     // expiration timestamp
 function limit()    external view returns (uint256)     // max mintable
 function minted()   external view returns (uint256)     // currently minted
-function stopped()  external view returns (bool)
+function stopped()  external view returns (bool)        // future deployments only — reverts on the live bridges
 ```
 
 | Metric | Healthy | Warning |
 |---|---|---|
 | `minted / limit` | < 80% | > 90% |
-| Time to `horizon` | > 30 days | < 7 days |
-| `stopped` | false | true |
+| Time to `horizon` | > 30 days | < 7 days (or already expired) |
+| `stopped` (future deployments) | false | true |
 
 | Flow direction | Interpretation |
 |---|---|
@@ -119,19 +123,23 @@ function stopped()  external view returns (bool)
 | **Outflow** (burning) | dEURO is less attractive, possibly interest rates too low |
 | **Balanced** | Market in equilibrium |
 
-## Active EUR Stablecoin Bridges
+## EUR Stablecoin Bridges
 
-| Source | Bridge Address | Underlying Token |
-|--------|----------------|------------------|
-| **EURT** (Tether EUR) | [`0x2353D16869F717BFCD22DaBc0ADbf4Dca62C609f`](https://etherscan.io/address/0x2353D16869F717BFCD22DaBc0ADbf4Dca62C609f) | [`0xC581b735A1688071A1746c968e0798D642EDE491`](https://etherscan.io/address/0xC581b735A1688071A1746c968e0798D642EDE491) |
-| **EURS** (STASIS Euro) | [`0x73f38ca06b27eaefb1612d062d885f58924f5897`](https://etherscan.io/address/0x73f38ca06b27eaefb1612d062d885f58924f5897) | [`0xdb25f211ab05b1c97d595516f45794528a807ad8`](https://etherscan.io/address/0xdb25f211ab05b1c97d595516f45794528a807ad8) |
-| **VEUR** (VNX Euro) | [`0x76d8f514554a4a8e5d6103875f2dd7a67543692b`](https://etherscan.io/address/0x76d8f514554a4a8e5d6103875f2dd7a67543692b) | [`0x6ba75d640bebfe5da1197bb5a2aff3327789b5d3`](https://etherscan.io/address/0x6ba75d640bebfe5da1197bb5a2aff3327789b5d3) |
-| **EURC** (Circle Euro) | [`0xB4fF7412f08C22d7381885e8BdA9EE9825092fd1`](https://etherscan.io/address/0xB4fF7412f08C22d7381885e8BdA9EE9825092fd1) | [`0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c`](https://etherscan.io/address/0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c) |
-| **EURR** (StablR Euro) | [`0x20B0a153fF16c7B1e962FD3D3352A00cf019f1a7`](https://etherscan.io/address/0x20B0a153fF16c7B1e962FD3D3352A00cf019f1a7) | [`0x50753CfAf86c094925Bf976f218D043f8791e408`](https://etherscan.io/address/0x50753CfAf86c094925Bf976f218D043f8791e408) |
-| **EUROP** (Schuman Financial) | [`0x3EF3d03EFCc1338d6210946f8cF5Fb1a8b630341`](https://etherscan.io/address/0x3EF3d03EFCc1338d6210946f8cF5Fb1a8b630341) | [`0x888883b5F5D21fb10Dfeb70e8f9722B9FB0E5E51`](https://etherscan.io/address/0x888883b5F5D21fb10Dfeb70e8f9722B9FB0E5E51) |
-| **EURI** (Banking Circle) | [`0xb66A40934a996373fA7602de9820C6bf3e8c9afE`](https://etherscan.io/address/0xb66A40934a996373fA7602de9820C6bf3e8c9afE) | [`0x9d1A7A3191102e9F900Faa10540837ba84dCBAE7`](https://etherscan.io/address/0x9d1A7A3191102e9F900Faa10540837ba84dCBAE7) |
-| **EURe** (Monerium) | [`0x4dfd460d54854087af195906a2f260aa483a13b1`](https://etherscan.io/address/0x4dfd460d54854087af195906a2f260aa483a13b1) | [`0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f`](https://etherscan.io/address/0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f) |
-| **EURA** (Angle) | [`0x05620F4bB92246b4e067EBC0B6f5c7FF6B771702`](https://etherscan.io/address/0x05620F4bB92246b4e067EBC0B6f5c7FF6B771702) | [`0x1a7e4e63778b4f12a199c062f3efdd288afcbce8`](https://etherscan.io/address/0x1a7e4e63778b4f12a199c062f3efdd288afcbce8) |
+Nine bridges have been approved as minters so far. A bridge only allows minting until its `horizon` passes; after that it is **expired** — minting reverts, while burning dEURO to retrieve the underlying stablecoin keeps working. Expired bridges remain listed because users may still hold claims against them; an expired bridge has to be replaced by a new deployment (and a new minter proposal) to resume minting.
+
+Status and horizon dates below reflect the on-chain `horizon()` values:
+
+| Source | Bridge Address | Underlying Token | Horizon | Status |
+|--------|----------------|------------------|---------|--------|
+| **EURT** (Tether EUR) | [`0x2353D16869F717BFCD22DaBc0ADbf4Dca62C609f`](https://etherscan.io/address/0x2353D16869F717BFCD22DaBc0ADbf4Dca62C609f) | [`0xC581b735A1688071A1746c968e0798D642EDE491`](https://etherscan.io/address/0xC581b735A1688071A1746c968e0798D642EDE491) | 2025-04-03 | Expired |
+| **EURS** (STASIS Euro) | [`0x73f38ca06b27eaefb1612d062d885f58924f5897`](https://etherscan.io/address/0x73f38ca06b27eaefb1612d062d885f58924f5897) | [`0xdb25f211ab05b1c97d595516f45794528a807ad8`](https://etherscan.io/address/0xdb25f211ab05b1c97d595516f45794528a807ad8) | 2026-11-05 | Active |
+| **VEUR** (VNX Euro) | [`0x76d8f514554a4a8e5d6103875f2dd7a67543692b`](https://etherscan.io/address/0x76d8f514554a4a8e5d6103875f2dd7a67543692b) | [`0x6ba75d640bebfe5da1197bb5a2aff3327789b5d3`](https://etherscan.io/address/0x6ba75d640bebfe5da1197bb5a2aff3327789b5d3) | 2026-11-05 | Active |
+| **EURC** (Circle Euro) | [`0xB4fF7412f08C22d7381885e8BdA9EE9825092fd1`](https://etherscan.io/address/0xB4fF7412f08C22d7381885e8BdA9EE9825092fd1) | [`0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c`](https://etherscan.io/address/0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c) | 2026-09-05 | Active |
+| **EURR** (StablR Euro) | [`0x20B0a153fF16c7B1e962FD3D3352A00cf019f1a7`](https://etherscan.io/address/0x20B0a153fF16c7B1e962FD3D3352A00cf019f1a7) | [`0x50753CfAf86c094925Bf976f218D043f8791e408`](https://etherscan.io/address/0x50753CfAf86c094925Bf976f218D043f8791e408) | 2025-10-22 | Expired |
+| **EUROP** (Schuman Financial) | [`0x3EF3d03EFCc1338d6210946f8cF5Fb1a8b630341`](https://etherscan.io/address/0x3EF3d03EFCc1338d6210946f8cF5Fb1a8b630341) | [`0x888883b5F5D21fb10Dfeb70e8f9722B9FB0E5E51`](https://etherscan.io/address/0x888883b5F5D21fb10Dfeb70e8f9722B9FB0E5E51) | 2025-10-22 | Expired |
+| **EURI** (Banking Circle) | [`0xb66A40934a996373fA7602de9820C6bf3e8c9afE`](https://etherscan.io/address/0xb66A40934a996373fA7602de9820C6bf3e8c9afE) | [`0x9d1A7A3191102e9F900Faa10540837ba84dCBAE7`](https://etherscan.io/address/0x9d1A7A3191102e9F900Faa10540837ba84dCBAE7) | 2025-10-22 | Expired |
+| **EURe** (Monerium) | [`0x4dfd460d54854087af195906a2f260aa483a13b1`](https://etherscan.io/address/0x4dfd460d54854087af195906a2f260aa483a13b1) | [`0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f`](https://etherscan.io/address/0x3231Cb76718CDeF2155FC47b5286d82e6eDA273f) | 2026-11-05 | Active |
+| **EURA** (Angle) | [`0x05620F4bB92246b4e067EBC0B6f5c7FF6B771702`](https://etherscan.io/address/0x05620F4bB92246b4e067EBC0B6f5c7FF6B771702) | [`0x1a7e4e63778b4f12a199c062f3efdd288afcbce8`](https://etherscan.io/address/0x1a7e4e63778b4f12a199c062f3efdd288afcbce8) | 2026-01-15 | Expired |
 
 ## Adding New Bridges
 
@@ -148,3 +156,5 @@ Criteria nDEPS holders look at when accepting or vetoing a bridge include the cr
 ```solidity
 event EmergencyStopped(address indexed caller, string message)
 ```
+
+The `EmergencyStopped` event is only emitted by future bridge deployments that include the emergency-stop mechanism — the currently deployed bridges do not have it (see the warning above).
